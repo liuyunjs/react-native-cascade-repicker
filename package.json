@@ -1,7 +1,7 @@
 {
   "name": "react-native-cascade-repicker",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
+  "private": false,
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "scripts": {
@@ -10,7 +10,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build": "rimraf ./dist && rollup -c rollup.config.js"
+    "build": "rimraf ./dist && rollup -c rollup.config.js",
+    "prepublishOnly": "rollup -c rollup.config.js"
   },
   "dependencies": {
     "@liuyunjs/hooks": "^1.1.5",

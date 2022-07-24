@@ -9,14 +9,19 @@ import { SafeAreaView, StatusBar, Button, useColorScheme } from 'react-native';
 import {
   CascadePickerView,
   CascadePicker,
-  resolveSelected,
+  resolveIndexesToValues,
+  resolveValuesToIndexes,
 } from 'react-native-cascade-repicker';
 import area from 'react-native-cascade-repicker/area.json';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [selected, setSelected] = React.useState<number[]>([]);
-  console.log(selected, resolveSelected(area, selected));
+  console.log(
+    selected,
+    resolveIndexesToValues(area, selected),
+    resolveValuesToIndexes(area, []),
+  );
   return (
     <SafeAreaView style={{ backgroundColor: '#foo', flex: 1 }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -33,7 +38,7 @@ const App = () => {
             selected,
             onSelected(sel: number[]) {
               setSelected(sel);
-              console.log('modality', sel, resolveSelected(area, sel));
+              console.log('modality', sel, resolveIndexesToValues(area, sel));
             },
             indicatorColor: '#ccc',
           });
